@@ -5,7 +5,7 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  * **********************************************************************
  * ORGANIZATION  :  Pi4J
  * PROJECT       :  Pi4J :: PLUGIN   :: Microchip CAP1116 I/O Providers
- * FILENAME      :  Cap1116DigitalOutput.java
+ * FILENAME      :  MicrochipCap1116DigitalInputProvider.java
  * 
  * This file is part of the Pi4J project. More information about
  * this project can be found here:  https://pi4j.com/
@@ -29,36 +29,30 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  * #L%
  */
 
-import com.pi4j.io.exception.IOException;
-import com.pi4j.io.gpio.digital.DigitalOutput;
-import com.pi4j.io.gpio.digital.DigitalOutputBase;
-import com.pi4j.io.gpio.digital.DigitalOutputConfig;
-import com.pi4j.io.gpio.digital.DigitalOutputProvider;
+import com.pi4j.io.gpio.digital.DigitalInputProvider;
+import com.pi4j.plugin.microchip.cap1116.MicrochipCap1116;
+import com.pi4j.plugin.microchip.cap1116.provider.gpio.digital.impl.MicrochipCap1116DigitalInputProviderImpl;
 
 /**
- * <p>Cap1116DigitalOutput class.</p>
+ * <p>MicrochipCap1116DigitalInputProvider interface.</p>
  *
  * @author Robert Savage (<a href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
  * @version $Id: $Id
  */
-public class Cap1116DigitalOutput extends DigitalOutputBase implements DigitalOutput {
+public interface MicrochipCap1116DigitalInputProvider extends DigitalInputProvider {
+
+    /** Constant <code>NAME="MicrochipCap1116.DIGITAL_INPUT_PROVIDER_NAME"</code> */
+    String NAME = MicrochipCap1116.DIGITAL_INPUT_PROVIDER_NAME;
+
+    /** Constant <code>ID="MicrochipCap1116.DIGITAL_INPUT_PROVIDER_ID"</code> */
+    String ID = MicrochipCap1116.DIGITAL_INPUT_PROVIDER_ID;
+
     /**
-     * <p>Constructor for Cap1116DigitalOutput.</p>
+     * <p>newInstance.</p>
      *
-     * @param provider a {@link com.pi4j.io.gpio.digital.DigitalOutputProvider} object.
-     * @param config a {@link com.pi4j.io.gpio.digital.DigitalOutputConfig} object.
+     * @return a {@link MicrochipCap1116DigitalInputProvider} object.
      */
-    public Cap1116DigitalOutput(DigitalOutputProvider provider, DigitalOutputConfig config){
-        super(provider, config);
-    }
-
-    @Override
-    public DigitalOutput on() throws IOException {
-        return high();
-    }
-
-    @Override
-    public DigitalOutput off() throws IOException {
-        return low();
+    static MicrochipCap1116DigitalInputProvider newInstance() {
+        return new MicrochipCap1116DigitalInputProviderImpl();
     }
 }

@@ -33,7 +33,7 @@ module com.pi4j.plugin.microchip.cap1116 {
     uses com.pi4j.extension.Plugin;
 
     exports com.pi4j.plugin.microchip.cap1116;
-    //exports com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
+    exports com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
 
     provides com.pi4j.extension.Plugin
             with com.pi4j.plugin.microchip.cap1116.MicrochipCap1116Plugin;

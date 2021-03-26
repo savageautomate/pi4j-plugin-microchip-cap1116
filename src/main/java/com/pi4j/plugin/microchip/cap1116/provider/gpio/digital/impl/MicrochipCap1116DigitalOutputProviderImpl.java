@@ -1,4 +1,4 @@
-package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
+package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital.impl;
 
 /*-
  * #%L
@@ -30,24 +30,24 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  */
 
 import com.pi4j.io.exception.IOException;
-import com.pi4j.io.exception.IOIllegalValueException;
-import com.pi4j.io.exception.IONotFoundException;
 import com.pi4j.io.gpio.digital.DigitalOutput;
 import com.pi4j.io.gpio.digital.DigitalOutputConfig;
 import com.pi4j.io.gpio.digital.DigitalOutputProviderBase;
+import com.pi4j.plugin.microchip.cap1116.provider.gpio.digital.MicrochipCap1116DigitalOutput;
+import com.pi4j.plugin.microchip.cap1116.provider.gpio.digital.MicrochipCap1116DigitalOutputProvider;
 
 /**
- * <p>Cap1116DigitalOutputProviderImpl class.</p>
+ * <p>MicrochipCap1116DigitalOutputProviderImpl class.</p>
  *
  * @author Robert Savage (<a href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
  * @version $Id: $Id
  */
-public class Cap1116DigitalOutputProviderImpl extends DigitalOutputProviderBase implements Cap1116DigitalOutputProvider {
+public class MicrochipCap1116DigitalOutputProviderImpl extends DigitalOutputProviderBase implements MicrochipCap1116DigitalOutputProvider {
 
     /**
-     * <p>Constructor for Cap1116DigitalOutputProviderImpl.</p>
+     * <p>Constructor for MicrochipCap1116DigitalOutputProviderImpl.</p>
      */
-    public Cap1116DigitalOutputProviderImpl(){
+    public MicrochipCap1116DigitalOutputProviderImpl(){
         this.id = ID;
         this.name = NAME;
     }
@@ -62,6 +62,6 @@ public class Cap1116DigitalOutputProviderImpl extends DigitalOutputProviderBase 
             throw new IOException("Unsupported address for Microchip CAP1116 digital output; (valid rage: 1-6)");
 
         // create an return new digital output instance
-        return new Cap1116DigitalOutput(this, config);
+        return new MicrochipCap1116DigitalOutput(this, config);
     }
 }

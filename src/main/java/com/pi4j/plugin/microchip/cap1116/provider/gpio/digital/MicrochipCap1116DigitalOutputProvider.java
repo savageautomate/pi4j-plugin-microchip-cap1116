@@ -5,7 +5,7 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  * **********************************************************************
  * ORGANIZATION  :  Pi4J
  * PROJECT       :  Pi4J :: PLUGIN   :: Microchip CAP1116 I/O Providers
- * FILENAME      :  Cap1116DigitalInputProviderImpl.java
+ * FILENAME      :  MicrochipCap1116DigitalOutputProvider.java
  * 
  * This file is part of the Pi4J project. More information about
  * this project can be found here:  https://pi4j.com/
@@ -29,37 +29,30 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  * #L%
  */
 
-import com.pi4j.io.exception.IOException;
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalInputConfig;
-import com.pi4j.io.gpio.digital.DigitalInputProviderBase;
+import com.pi4j.io.gpio.digital.DigitalOutputProvider;
+import com.pi4j.plugin.microchip.cap1116.MicrochipCap1116;
+import com.pi4j.plugin.microchip.cap1116.provider.gpio.digital.impl.MicrochipCap1116DigitalOutputProviderImpl;
 
 /**
- * <p>Cap1116DigitalInputProviderImpl class.</p>
+ * <p>MicrochipCap1116DigitalOutputProvider interface.</p>
  *
  * @author Robert Savage (<a href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
  * @version $Id: $Id
  */
-public class Cap1116DigitalInputProviderImpl extends DigitalInputProviderBase implements Cap1116DigitalInputProvider {
+public interface MicrochipCap1116DigitalOutputProvider extends DigitalOutputProvider {
+
+    /** Constant <code>NAME="MicrochipCap1116.DIGITAL_OUTPUT_PROVIDER_NAME"</code> */
+    String NAME = MicrochipCap1116.DIGITAL_OUTPUT_PROVIDER_NAME;
+
+    /** Constant <code>ID="MicrochipCap1116.DIGITAL_OUTPUT_PROVIDER_ID"</code> */
+    String ID = MicrochipCap1116.DIGITAL_OUTPUT_PROVIDER_ID;
 
     /**
-     * <p>Constructor for Cap1116DigitalInputProviderImpl.</p>
+     * <p>newInstance.</p>
+     *
+     * @return a {@link MicrochipCap1116DigitalOutputProvider} object.
      */
-    public Cap1116DigitalInputProviderImpl(){
-        this.id = ID;
-        this.name = NAME;
-    }
-
-    /** {@inheritDoc} */
-    @Override
-    public DigitalInput create(DigitalInputConfig config) {
-
-        // validate provided address to ensure its an acceptable input for this chip
-        // TODO :: I'm not sure if this the the right exception to throw or if this is the right location to perform address validation?
-        if(config.address() < 1 || config.address() > 6)
-            throw new IOException("Unsupported address for Microchip CAP1116 digital input; (valid rage: 1-6)");
-
-        // create an return new digital input instance
-        return new Cap1116DigitalInput(this, config);
+    static MicrochipCap1116DigitalOutputProvider newInstance() {
+        return new MicrochipCap1116DigitalOutputProviderImpl();
     }
 }

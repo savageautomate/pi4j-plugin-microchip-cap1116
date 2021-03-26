@@ -5,7 +5,7 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
  * **********************************************************************
  * ORGANIZATION  :  Pi4J
  * PROJECT       :  Pi4J :: PLUGIN   :: Microchip CAP1116 I/O Providers
- * FILENAME      :  Cap1116DigitalInput.java
+ * FILENAME      :  MicrochipCap1116DigitalInput.java
  * 
  * This file is part of the Pi4J project. More information about
  * this project can be found here:  https://pi4j.com/
@@ -33,22 +33,22 @@ package com.pi4j.plugin.microchip.cap1116.provider.gpio.digital;
 import com.pi4j.io.gpio.digital.*;
 
 /**
- * <p>Cap1116DigitalInput class.</p>
+ * <p>MicrochipCap1116DigitalInput class.</p>
  *
  * @author Robert Savage (<a href="http://www.savagehomeautomation.com">http://www.savagehomeautomation.com</a>)
  * @version $Id: $Id
  */
-public class Cap1116DigitalInput extends DigitalInputBase implements DigitalInput {
+public class MicrochipCap1116DigitalInput extends DigitalInputBase implements DigitalInput {
 
     private DigitalState state = DigitalState.LOW;
 
     /**
-     * <p>Constructor for Cap1116DigitalInput.</p>
+     * <p>Constructor for MicrochipCap1116DigitalInput.</p>
      *
      * @param provider a {@link com.pi4j.io.gpio.digital.DigitalInputProvider} object.
      * @param config a {@link com.pi4j.io.gpio.digital.DigitalInputConfig} object.
      */
-    public Cap1116DigitalInput(DigitalInputProvider provider, DigitalInputConfig config){
+    public MicrochipCap1116DigitalInput(DigitalInputProvider provider, DigitalInputConfig config){
         super(provider, config);
     }
 
